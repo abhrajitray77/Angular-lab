@@ -1,0 +1,28 @@
+
+
+<div class="container">
+  <form name="completed" *ngFor="let i of items" class="items">
+    <label for={{i}} class="item_name">{{i}}</label>
+    <input type="checkbox" class="checks" 
+    id={{i}} name={{i}} value={{i}} (change)="updateCompleted($event);">
+  </form>
+ 
+  <div>
+    <h4>Completed tasks:</h4>
+    <form name="completed" [(ngModel)]="completed" *ngIf="completed.length>=0">
+      <div
+     *ngFor="let i of completed" class="results">
+      <label (click)="!isClicked" 
+      for={{i}} class="res_name">{{i}}</label>
+        <ul *ngFor="let res of itemValues">
+          <li>
+            {{res.list}}
+          </li>
+        </ul>
+    </div>
+  </form>
+
+
+</div>
+
+<router-outlet></router-outlet>
